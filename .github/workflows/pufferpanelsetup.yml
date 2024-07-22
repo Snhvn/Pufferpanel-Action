@@ -1,0 +1,18 @@
+name: Install PufferPanel
+
+on:
+ workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Cài Đặt Tailscale 
+      run: |
+       curl -fsSL https://tailscale.com/install.sh | sh
+       sudo tailscale up
+    - name: Install PufferPanel
+      run: |
+       wget -O install_pufferpanel.sh https://github.com/Snhvn/Pufferpanel-Action/raw/main/pufferpanel_install.sh
+       bash install_pufferpanel.sh
